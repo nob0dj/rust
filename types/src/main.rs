@@ -1,7 +1,21 @@
 fn main() {
-    type_integer();
-    type_char();
-    
+    // type_integer();
+    // type_char();
+    casting();
+}
+/// simple type changing using 'as'
+fn casting() {
+    let a : u8 = 10;
+    let b : u16 = 20;
+    let c = a + b as u8; // u8 + u16 불가능하지만, 두번째 인수를 u8으로 type casting한 후에는 가능하다.
+    println!("c = {c}");
+
+    let ch : u8 = 97; // u8타입만 char로 casting 가능하다.
+    println!("ch = {}", ch as char);
+
+    let n = 'a' as u8; // 97
+    let n = '한' as u32; // 54620
+    println!("n = {}", n);
 }
 
 fn type_char() {
