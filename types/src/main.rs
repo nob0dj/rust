@@ -4,7 +4,19 @@ fn main() {
     // type_integer();
     // type_char();
     // casting();
-    type_string();
+    // type_string();
+    type_inference();
+}
+
+fn type_inference() {
+    let small_number: u8 = 10;
+    let small_number = 10u8;
+    let small_number = 10_u8;
+    let small_number = 10_______________________u8; // compiler는 _무시
+    println!("{}", small_number); // 10
+
+    let big_number = 100_000_000_i32; // 3자리 그룹핑 가능
+    println!("{}", big_number); // 100000000
 }
 
 /// string
