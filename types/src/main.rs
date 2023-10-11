@@ -5,7 +5,29 @@ fn main() {
     // type_char();
     // casting();
     // type_string();
-    type_inference();
+    // type_inference();
+    type_float();
+}
+
+/// 실수 타입 
+/// - f32 
+/// - f64(기본값)
+fn type_float() {
+    let f1 = 0.1234567890_f32;
+    let f2 = 0.12345678901234567890;
+    println!("{}", f1); // 0.12345679 유효자리수 7자리
+    println!("{}", f2); // 0.12345678901234568 유효자리수 16자리
+
+
+    let my_float = 5.; // 5.0
+    let my_float = 0.5; // .5  작성불가
+    println!("{}", my_float); 
+
+    let other_number = 5;
+
+    println!("{}", my_float as i32 + other_number); // 5
+    println!("{}", my_float + other_number as f64); // 5.5
+
 }
 
 fn type_inference() {
