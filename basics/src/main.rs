@@ -1,6 +1,28 @@
 fn main() {
     // macro_println();
-    semicolon();
+    // semicolon();
+    code_block();
+}
+
+fn code_block() {
+    let num = multiply_nums(5,6);
+    println!("{}", num); // 30
+
+    let num = calc(3, 5, 7);
+    println!("{}", num); // 126 (10 + 3 + 5) * 7
+}
+
+fn calc(m : i32, n : i32, l : i32) -> i32 {
+    /// code_block 마지막의 return 값이 변수에 대입된다.
+    let result = {
+        let k = 10;
+        k + m + n
+    }; // 마지막 세미콜론 필수
+    result * l
+}
+
+fn multiply_nums(m : i32, n : i32) -> i32 {
+    m * n
 }
 
 fn semicolon() {
@@ -34,4 +56,5 @@ fn get_age() -> i32 {
     // return 33;
     33
 }
+
 
