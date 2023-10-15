@@ -1,20 +1,54 @@
-use rand::Rng;
+// use rand::Rng;
 
 fn main() {
     // macro_println();
     // semicolon();
     // code_block();
-    generate_random_num();
+    // generate_random_num();
+    mutability();
+    shadowing();
+}
+
+/// 사용했던 변수를 새로 선언하면서, 기존 변수는 더이상 접근이 불가능하게 하는것.
+/// 주로 관심사가 마지막에 있을때 사용하면 좋다.
+fn shadowing() {
+    let x = 10; 
+    let x = double(x); // 20
+    let x = triple(x); // 60
+    println!("{x}");
+
+
+    let name = "홍길동";
+    println!("{name}"); // 홍길동
+    {
+        let name = "신사임당";
+        println!("{name}"); // 신사임당
+    }    
+    println!("{name}"); // 홍길동
+}
+
+fn double(input : i32) -> i32 {
+    input * 2
+}
+fn triple(input : i32) -> i32 {
+    input * 3
+}
+
+/// rust immutable by default 
+fn mutability() {
+    let mut n = 10;
+    // n = 9;
+    println!("{n}")
 }
 
 /// 1. Cargo.toml dependency 설정
 /// 2. use rand::Rng 선언
 /// 3. rand::thread_rng().get_range(start..end)
 /// 4. 터미널에서 cargo build, cargo run 수행 (vscode run은 import 오류ㅠ)
-fn generate_random_num() {
-    let secret_number = rand::thread_rng().gen_range(1..101);
-    println!("사용자가 맞혀야 할 숫자: {}", secret_number);
-}
+// fn generate_random_num() {
+//     let secret_number = rand::thread_rng().gen_range(1..101);
+//     println!("사용자가 맞혀야 할 숫자: {}", secret_number);
+// }
 
 fn code_block() {
     let num = multiply_nums(5,6);
