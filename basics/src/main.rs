@@ -1,4 +1,6 @@
 // use rand::Rng;
+#![allow(dead_code)]
+#![allow(unused_assignments)]
 
 fn main() {
     // macro_println();
@@ -7,7 +9,37 @@ fn main() {
     // generate_random_num();
     // mutability();
     // shadowing();
-    pointer();
+    // pointer();
+    fancy_print();
+}
+
+fn fancy_print() {
+    print!("Hello\nWorld\n");
+    print!("Hello
+World
+");
+    println!(r#"C:\dev"#); // raw text r#..#으로 감싸기 
+
+    let n = 15;
+    println!("{:x}", n); // 16진수 {:x}, {:X}
+    println!("{:b}", n); // 1111
+
+    let n_ref = &n;
+    println!("{:p} -> {}", n_ref, *n_ref);
+
+    let title = "TODAY'S NEWS";
+    // 정렬 < 왼쪽, ^ 가운데, > 오른쪽
+    println!("{:-^30}", title); // no variable name, pad with -, put in centre, 30 characters long
+    let bar = "|";
+    println!("{: <15}{: >15}", bar, bar); // no variable name, pad with space, 15 characters each, one to the left, one to the right
+    let a = "SEOUL";
+    let b = "TOKYO";
+    println!("{city1:-<15}{city2:->15}", city1 = a, city2 = b); // variable names city1 and city2, pad with -, one to the left, one to the right
+    /*
+        ---------TODAY'S NEWS---------
+        |                            |
+        SEOUL--------------------TOKYO
+     */
 }
 
 /// stack, heap, pointer
@@ -51,7 +83,7 @@ fn triple(input : i32) -> i32 {
 /// rust immutable by default 
 fn mutability() {
     let mut n = 10;
-    // n = 9;
+    n = 9;
     println!("{n}")
 }
 
@@ -73,7 +105,7 @@ fn code_block() {
 }
 
 fn calc(m : i32, n : i32, l : i32) -> i32 {
-    /// code_block 마지막의 return 값이 변수에 대입된다.
+    // code_block 마지막의 return 값이 변수에 대입된다.
     let result = {
         let k = 10;
         k + m + n
