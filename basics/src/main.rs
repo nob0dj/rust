@@ -1,7 +1,19 @@
+use rand::Rng;
+
 fn main() {
     // macro_println();
     // semicolon();
-    code_block();
+    // code_block();
+    generate_random_num();
+}
+
+/// 1. Cargo.toml dependency 설정
+/// 2. use rand::Rng 선언
+/// 3. rand::thread_rng().get_range(start..end)
+/// 4. 터미널에서 cargo build, cargo run 수행 (vscode run은 import 오류ㅠ)
+fn generate_random_num() {
+    let secret_number = rand::thread_rng().gen_range(1..101);
+    println!("사용자가 맞혀야 할 숫자: {}", secret_number);
 }
 
 fn code_block() {
