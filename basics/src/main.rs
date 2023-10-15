@@ -5,8 +5,22 @@ fn main() {
     // semicolon();
     // code_block();
     // generate_random_num();
-    mutability();
-    shadowing();
+    // mutability();
+    // shadowing();
+    pointer();
+}
+
+/// stack, heap, pointer
+fn pointer() {
+    let my_number = 15; // This is an i32
+    let single_reference = &my_number; //  This is a &i32
+    let double_reference = &single_reference; // This is a &&i32
+    let five_references = &&&&&my_number; // This is a &&&&&i32
+
+    println!("{my_number}"); // 15
+    println!("{single_reference}"); // 15
+    println!("{double_reference}"); // 15
+    println!("{five_references}"); // 15
 }
 
 /// 사용했던 변수를 새로 선언하면서, 기존 변수는 더이상 접근이 불가능하게 하는것.
