@@ -1,4 +1,9 @@
+#![allow(dead_code)]
+#![allow(unused_assignments)]
+#![allow(unused_variables)]
+
 use std::mem::size_of;
+
 
 fn main() {
     // type_integer();
@@ -6,7 +11,53 @@ fn main() {
     // casting();
     // type_string();
     // type_inference();
-    type_float();
+    // type_float();
+
+    type_string2();
+}
+
+/// String owned string
+/// &str
+/// string
+/// slice
+fn type_string2() {
+    // &str
+    let my_name = "David"; // &str
+    println!("{my_name}");
+
+    // String
+    let my_name = my_name.to_string();
+    let my_name = String::from("Bell");
+    println!("{my_name}");
+    
+    // growable/shrinkable string
+    let mut my_name = "홍길동".to_string();
+    my_name.push('홍'); // 한글자씩 맨뒤에 추가
+    my_name.push_str("길동길동");
+    println!("{my_name}"); // 홍길동요
+    
+    // length | capacity 
+    // 길이가 늘어날때 마다 reallocation된다. x2
+    let mut text = "".to_string();
+    println!("length is {}, capacity is {}", text.len(), text.capacity()); // 0 0
+    text.push_str("David");
+    println!("length is {}, capacity is {}", text.len(), text.capacity()); // 5 8
+    text.push_str(" Hi!");
+    println!("length is {}, capacity is {}", text.len(), text.capacity()); // 9 16
+    text.push_str(" He loves Seoul~");
+    println!("length is {}, capacity is {}", text.len(), text.capacity()); // 25 32
+
+    // with_capacity
+    // reallocation 없이 한번에 할당하기. 크기가 커지면 reallocation된다.
+    let mut text = String::with_capacity(32);
+    println!("length is {}, capacity is {}", text.len(), text.capacity()); // 0 32
+    text.push_str("David");
+    println!("length is {}, capacity is {}", text.len(), text.capacity()); // 5 32
+    text.push_str(" Hi!");
+    println!("length is {}, capacity is {}", text.len(), text.capacity()); // 9 32
+    text.push_str(" He loves Seoul~");
+    println!("length is {}, capacity is {}", text.len(), text.capacity()); // 25 32
+
 }
 
 /// 실수 타입 
