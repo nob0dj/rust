@@ -16,7 +16,31 @@ fn main() {
 
     // type_string2();
     // const_static();
-    ownership();
+    // ownership();
+    ownership2();
+}
+
+fn ownership2() {
+    // immutable ref와 mutable ref를 동시에 빌릴수 없다.
+    // let mut n = 10;
+    // let n_ref = &n;
+    // let n_change = &mut n; // cannot borrow `n` as mutable because it is also borrowed as immutable
+    // *n_change *= 10;
+    // println!("{n_ref}"); // cannot borrow `n` as mutable because it is also borrowed as immutable
+
+    // 아래는 작동 가능한 코드이다. &mut 변경후 immutable 참조하므로 컴파일러 판단에 문제 없음.
+    let mut m = 10;
+    let m_change = &mut m;
+    *m_change *= 10;
+    let m_ref = &m;
+    println!("{m_ref}");
+
+    // shadowing
+    let country = "Korea";
+    let country_ref = &country;
+    let country = 8; // shadowing이지만 포인터를 통해 여전히 이전값 접근 가능!
+    println!("{}, {}", country_ref, country); // Korea, 8
+
 }
 
 /// & immutable reference(shared reference)
