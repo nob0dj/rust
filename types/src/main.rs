@@ -1,6 +1,7 @@
 #![allow(dead_code)]
 #![allow(unused_assignments)]
 #![allow(unused_variables)]
+#[allow(non_upper_case_globals)]
 
 use std::mem::size_of;
 
@@ -13,7 +14,21 @@ fn main() {
     // type_inference();
     // type_float();
 
-    type_string2();
+    // type_string2();
+    const_static();
+}
+
+// 전역변수는 let binding이 아닌 const | static 사용
+const HIGH_SCORE: i32 = 20; // global scope 대문자로 작성, 타입명시
+static mut LOW_SCORE: i32 = 0; // static은 mutable 가능, unsafe(비추), 프로그램시작~끝 생명주기
+
+
+fn const_static() {
+    println!("{HIGH_SCORE}"); // 20
+    // unsafe는 데이터 보장이 안되므로 사용금지
+    unsafe {
+        println!("{LOW_SCORE}"); // 0
+    }
 }
 
 /// String owned string
