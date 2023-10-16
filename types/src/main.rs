@@ -15,8 +15,37 @@ fn main() {
     // type_float();
 
     // type_string2();
-    const_static();
+    // const_static();
+    ownership();
 }
+
+/// & immutable reference(shared reference)
+/// &mut mutalbe reference / unique reference
+fn ownership() {
+    let country = String::from("대한민국");
+    // 읽기 전용 참조는 개수 제한 없이 생성가능
+    let ref_one = &country;
+    let ref_two = &country;
+    println!("{}, {}", ref_one, ref_two);
+
+    // 함수하위 빌린 참조를 반환할 수 없다.
+    // let country = get_country();
+    // println!("{}", country);
+
+    // 쓰기전용 참조는 &mut 변수명으로 작성! - &mut와 이후 *값참조의 개수는 동일해야 한다.
+    // &mut &mut 원조값 - **포인터
+    // 단하나의 쓰기전용 참조만 가질 수 있다.
+    let mut num = 9;
+    let num_ref = &mut num;
+    *num_ref *= 2;
+    println!("{num}") // 18
+}
+
+/// 지역변수에 대한 포인터를 리턴할 수 없다. 함수 생명주기가 끝날때 해당데이터는 더이상 접근불가!
+// fn get_country() -> &String {
+//     let country = String::from("캐나다");
+//     &country
+// }
 
 // 전역변수는 let binding이 아닌 const | static 사용
 const HIGH_SCORE: i32 = 20; // global scope 대문자로 작성, 타입명시
