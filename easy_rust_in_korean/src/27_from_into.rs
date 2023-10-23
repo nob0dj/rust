@@ -7,5 +7,38 @@ fn main() {
   println!("{}", my_name); // David
   let my_city: String = "Seoul".into(); // -> String, &str?
   println!("{}", my_city); // Seoul 
+
+  // Number struct 예제
+  let n = Number::from(30);
+  println!("{} {}", n.num, n.has_point); // 30 false
+  let f = Number::from(5.5);
+  println!("{} {}", f.num, f.has_point); // 5.5 true
+
+  let n2: Number = 30.into();
+  println!("{} {}", n.num, n.has_point); // 30 false
+  let f2: Number = 5.5.into();
+  println!("{} {}", f2.num, f2.has_point); // 5.5 true
+}
+
+struct Number {
+  num: String,
+  has_point: bool
+}
+
+impl From<i32> for Number {
+  fn from(item: i32) -> Number {
+    Number {
+      num: item.to_string(),
+      has_point: false
+    }
+  }
+}
+impl From<f32> for Number {
+  fn from(item: f32) -> Number {
+    Number {
+      num: item.to_string(),
+      has_point: true
+    }
+  }
 }
 
