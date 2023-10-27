@@ -1,7 +1,23 @@
 fn main() {
   test_if();
   test_match();
+  test_match2();
 }
+
+/// tuple match문에 사용하기
+fn test_match2() {
+  let sky = "cloudy";
+  let temperature = 20;
+  
+  match (sky, temperature) {
+    ("cloudy", 0) => println!("It's cloudy and freezy!"),
+    ("cloudy", 10) => println!("It's cloudy and cold!"),
+    ("cloudy", 20) => println!("It's cloudy and warm!"),
+    ("clear", 20) => println!("It's clear and warm!"), 
+    _ => println!("I don't know!"),
+  }
+}
+
 
 fn test_match() {
   let n = 3;
