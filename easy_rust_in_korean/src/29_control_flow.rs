@@ -2,6 +2,19 @@ fn main() {
   test_if();
   test_match();
   test_match2();
+  test_match3();
+}
+
+/// match문에 if사용하기
+fn test_match3() {
+  let children = 5;
+  let married = true;
+
+  match(children, married) {
+    (c, m) if !married => println!("Not married!"),
+    (c, m) if married && c == 0 => println!("No children!"),
+    _ => println!("Has chilren!")
+  }
 }
 
 /// tuple match문에 사용하기
@@ -13,6 +26,15 @@ fn test_match2() {
     ("cloudy", 0) => println!("It's cloudy and freezy!"),
     ("cloudy", 10) => println!("It's cloudy and cold!"),
     ("cloudy", 20) => println!("It's cloudy and warm!"),
+    ("clear", 20) => println!("It's clear and warm!"), 
+    _ => println!("I don't know!"),
+  }
+
+  // if문 적용시
+  match (sky, temperature) {
+    ("cloudy", t) if t < 10 => println!("It's cloudy and freezy!"),
+    ("cloudy", t) if t >= 10 && t < 20 => println!("It's cloudy and cold!"),
+    ("cloudy", t) if t >= 20 => println!("It's cloudy and warm!"),
     ("clear", 20) => println!("It's clear and warm!"), 
     _ => println!("I don't know!"),
   }
