@@ -1,8 +1,26 @@
 fn main() {
-  test_if();
-  test_match();
-  test_match2();
-  test_match3();
+  // test_if();
+  // test_match();
+  // test_match2();
+  // test_match3();
+  test_match4();
+}
+
+fn test_match4() {
+  match_color((10, 100, 100));
+  match_color((100, 10, 100));
+  match_color((100, 100, 10));
+  match_color((100, 100, 100));
+
+}
+
+fn match_color(rgb: (u32, u32, u32)) {
+  match rgb {
+    (r, _, _) if r < 50 => println!("Redish~"),
+    (_, g, _) if g < 50 => println!("Greenish~"),
+    (_, _, b) if b < 50 => println!("Bluish~"),
+    _ => println!("Some other color!")
+  }
 }
 
 /// match문에 if사용하기
