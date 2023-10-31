@@ -3,7 +3,25 @@ fn main() {
   // test_match();
   // test_match2();
   // test_match3();
-  test_match4();
+  // test_match4();
+  test_match5();
+}
+
+/// match statement의 반환값은 모든 case에서 같은 타입을 반환해야 한다.
+fn test_match5() {
+  let num = 10;
+  let result = match num {
+    10 => 1,
+    20 => 2, 
+    // 30 => "Hello" // expected integer, found `&str`
+    _ => 999999999
+  }; // match statement가 연산식인 경우 ; 필수!
+  println!("result = {result}");
+
+  // 삼항연산자가 없는 대신 if...else문도 연산식으로 작성가능
+  // rust에서는 if블럭의 중괄호를 생략할 수 없다.
+  let result2 = if num > 0 { 999 } else { 0 };
+  println!("result2 = {result2}");
 }
 
 fn test_match4() {
