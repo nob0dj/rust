@@ -4,7 +4,26 @@ fn main() {
   // test_match2();
   // test_match3();
   // test_match4();
-  test_match5();
+  // test_match5();
+  test_match6();
+}
+
+/// case문 값범위 설정
+/// 변수설정
+fn test_match6() {
+  match_number(10);
+  match_number(100);
+}
+
+
+fn match_number(input: i32) {
+  match input {
+    // 0..10 => println!("It's between 0 and 10"), // 0이상 10미만, 에러! 
+    // error[E0658]: exclusive range pattern syntax is experimental
+    // #![feature(exclusive_range_pattern)] 추가후 테스트
+    0..=10 => println!("It's between 0 and 10"), // 0이상 10이하
+    _ => println!("It's greater than 10")
+  }
 }
 
 /// match statement의 반환값은 모든 case에서 같은 타입을 반환해야 한다.
