@@ -25,6 +25,22 @@ fn main() {
 
   test_tuple_struct();
 
+  test_named_struct();  
+}
+
+
+fn test_named_struct() {
+  let korea = Country {
+    name : "한국".to_string(), 
+    population : 51_000_000,
+    capital : "서울".to_string(), 
+    leader_name : "윤석열".to_string()
+  };
+  println!("한국은 현재 인구가 {}명이고, 수도는 {}, 대통령은 {}입니다.", 
+          korea.population, 
+          korea.capital, 
+          korea.leader_name, 
+      );
 }
 
 fn test_tuple_struct() {
