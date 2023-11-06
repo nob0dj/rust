@@ -26,8 +26,25 @@ fn main() {
   test_tuple_struct();
 
   test_named_struct();  
+  test_named_struct2();  
+
 }
 
+/// 변수를 간단히 속성으로 등록할 수 있다.
+fn test_named_struct2() {
+  let name = "한국".to_string();
+  let population = 51_000_000; 
+  let capital = "서울".to_string();
+  let leader_name = "윤석열".to_string();
+
+  let korea = Country {
+    name, 
+    population,
+    capital,
+    leader_name
+  };
+  println!("한국 : {:#?}", korea)
+}
 
 fn test_named_struct() {
   let korea = Country {
